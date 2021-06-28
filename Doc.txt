@@ -1,0 +1,6 @@
+User Management
+===============
+- Register New User
+- Send Registration Confirmation mail
+- User Login
+- User forgot password

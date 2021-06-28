@@ -1,0 +1,40 @@
+{% extends 'users_management/layout.html'%}
+{% block content %}
+    {% if msg == 'mail_sent' %}
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Hello</h4>
+            <p>Email address confirmation link has been sent to your register email address</p>
+            <hr>
+            <p class="mb-0">
+                <a class="btn btn-primary" href="{{url_for('users_management.login')}}" role="button">Back to login</a>
+            </p>
+        </div>
+    {% elif msg == 'mail_expired' %}
+        <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">Hello</h4>
+            <p>Your email address confirmation link has been expired</p>
+            <hr>
+            <p class="mb-0">
+                <a class="btn btn-primary" href="{{url_for('users_management.login')}}" role="button">Back to login</a>
+            </p>
+        </div>
+    {% elif msg == 'mail_linkerror' %}
+        <div class="alert alert-danger" role="alert">
+            <h4 class="alert-heading">Hello</h4>
+            <p>Your email address confirmation link is invalid</p>
+            <hr>
+            <p class="mb-0">
+                <a class="btn btn-primary" href="{{url_for('users_management.login')}}" role="button">Back to login</a>
+            </p>
+        </div>
+    {% elif msg == 'password_reset_mail_sent' %}
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Hello</h4>
+            <p>Your password reset link has been send to your registered email id</p>
+            <hr>
+            <p class="mb-0">
+                <a class="btn btn-primary" href="{{url_for('users_management.login')}}" role="button">Back to login</a>
+            </p>
+        </div>
+    {% endif %}
+{% endblock content %}
