@@ -1,0 +1,250 @@
+{% extends 'home/layout.html'%}
+{% block content %}
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{url_for('home.home')}}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Compute Instances</li>
+        </ol>
+    </nav>
+    <div>
+        <p>Select AWS Region</p>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="text-muted mb-3 mt-3">
+                <span class="flag-icon flag-icon-us me-2"></span>
+                North America
+            </div>
+            <div class="list-group mb-3">
+                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">US East (Northern Virginia)</h5>
+                    <small>us-east-1</small>
+                  </div>
+                  <p class="mb-1">Availability Zones : 6</p>
+                  <small></small>
+                </a>
+
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">US East (Ohio)</h5>
+                    <small class="text-muted">us-east-2</small>
+                  </div>
+                  <p class="mb-1">Availability Zones : 3</p>
+                  <small class="text-muted"></small>
+                </a>
+
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">US West (N. California)</h5>
+                      <small class="text-muted">us-west-1</small>
+                    </div>
+                    <p class="mb-1">Availability Zones : 3</p>
+                    <small class="text-muted"></small>
+                </a>
+
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">US West (Oregon)</h5>
+                    <small class="text-muted">us-west-2</small>
+                  </div>
+                  <p class="mb-1">Availability Zones : 4</p>
+                  <small class="text-muted"></small>
+                </a>
+            </div>
+            <div class="text-muted mb-3">
+                <span class="flag-icon flag-icon-br me-2"></span>
+                South America
+            </div>
+            <div class="list-group mb-3">
+                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">South America (São Paulo)</h5>
+                      <small>sa-east-1</small>
+                    </div>
+                    <p class="mb-1">Availability Zones : 3</p>
+                    <small></small>
+                </a>
+            </div>
+
+            <div class="text-muted mb-3">
+                <span class="flag-icon flag-icon-ca me-2"></span>
+                Canada
+            </div>
+            <div class="list-group mb-3">
+                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Canada (Central)</h5>
+                      <small>ca-central-1</small>
+                    </div>
+                    <p class="mb-1">Availability Zones : 3</p>
+                    <small></small>
+                </a>
+            </div>
+            <div class="text-muted mb-3">
+                <span class="flag-icon flag-icon-bh me-2"></span>
+                Middle East
+            </div>
+            <div class="list-group mb-3">
+                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Middle East (Bahrain) </h5>
+                      <small>me-south-1</small>
+                    </div>
+                    <p class="mb-1">Availability Zones : 3</p>
+                    <small></small>
+                </a>
+            </div>
+        </div>
+        <div class="col-3 ms-4">
+            <div class="text-muted mb-3 mt-3">
+                Europe
+                <span class="flag-icon flag-icon-de ms-2 me-2"></span>
+                <span class="flag-icon flag-icon-ie me-2"></span>
+                <span class="flag-icon flag-icon-gb-eng me-2"></span>
+                <span class="flag-icon flag-icon-it me-2"></span>
+                <span class="flag-icon flag-icon-fr me-2"></span>
+                <span class="flag-icon flag-icon-se me-2"></span>
+            </div>
+            <div class="list-group mb-3">
+                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Europe (Frankfurt)</h5>
+                    <small>eu-central-1</small>
+                  </div>
+                  <p class="mb-1">Availability Zones : 3</p>
+                  <small></small>
+                </a>
+
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Europe (London)</h5>
+                    <small class="text-muted">eu-west-2</small>
+                  </div>
+                  <p class="mb-1">Availability Zones : 3</p>
+                  <small class="text-muted"></small>
+                </a>
+
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Europe (Paris)</h5>
+                      <small class="text-muted">eu-west-3</small>
+                    </div>
+                    <p class="mb-1">Availability Zones : 3</p>
+                    <small class="text-muted"></small>
+                </a>
+
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Europe (Ireland)</h5>
+                    <small class="text-muted">eu-west-1</small>
+                  </div>
+                  <p class="mb-1">Availability Zones : 3</p>
+                  <small class="text-muted"></small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Europe (Milan)</h5>
+                      <small class="text-muted">eu-south-1</small>
+                    </div>
+                    <p class="mb-1">Availability Zones : 3</p>
+                    <small class="text-muted"></small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Europe (Stockholm)</h5>
+                      <small class="text-muted">eu-north-1</small>
+                    </div>
+                    <p class="mb-1">Availability Zones : 3</p>
+                    <small class="text-muted"></small>
+                </a>
+            </div>
+            <div class="text-muted mb-3">
+                <span class="flag-icon flag-icon-af me-2"></span>
+                Africa
+            </div>
+            <div class="list-group mb-3">
+                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Africa (Cape Town)</h5>
+                      <small>af-south-1</small>
+                    </div>
+                    <p class="mb-1">Availability Zones : 3</p>
+                    <small></small>
+                </a>
+            </div>
+        </div>
+        <div class="col-3 ms-4">
+            <div class="text-muted mb-3 mt-3">
+                Asia Pacific
+                <span class="flag-icon flag-icon-hk ms-2 me-2"></span>
+                <span class="flag-icon flag-icon-in me-2"></span>
+                <span class="flag-icon flag-icon-jp me-2"></span>
+                <span class="flag-icon flag-icon-kr me-2"></span>
+                <span class="flag-icon flag-icon-sg me-2"></span>
+                <span class="flag-icon flag-icon-au me-2"></span>
+            </div>
+            <div class="list-group mb-3">
+                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Asia Pacific (Hong Kong)</h5>
+                    <small>ap-east-1</small>
+                  </div>
+                  <p class="mb-1">Availability Zones : 3</p>
+                  <small></small>
+                </a>
+
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Asia Pacific (Mumbai)</h5>
+                    <small class="text-muted">ap-south-1</small>
+                  </div>
+                  <p class="mb-1">Availability Zones : 3</p>
+                  <small class="text-muted"></small>
+                </a>
+
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Asia Pacific (Osaka)</h5>
+                      <small class="text-muted">ap-northeast-3</small>
+                    </div>
+                    <p class="mb-1">Availability Zones : 3</p>
+                    <small class="text-muted"></small>
+                </a>
+
+                <a href="#" class="list-group-item list-group-item-action">
+                  <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Asia Pacific (Seoul) </h5>
+                    <small class="text-muted">ap-northeast-2</small>
+                  </div>
+                  <p class="mb-1">Availability Zones : 4</p>
+                  <small class="text-muted"></small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Asia Pacific (Singapore)</h5>
+                      <small class="text-muted">ap-southeast-1</small>
+                    </div>
+                    <p class="mb-1">Availability Zones : 3</p>
+                    <small class="text-muted"></small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Asia Pacific (Sydney)</h5>
+                      <small class="text-muted">ap-southeast-2</small>
+                    </div>
+                    <p class="mb-1">Availability Zones : 3</p>
+                    <small class="text-muted"></small>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">Asia Pacific (Tokyo)</h5>
+                      <small class="text-muted">ap-northeast-1</small>
+                    </div>
+                    <p class="mb-1">Availability Zones : 4</p>
+                    <small class="text-muted"></small>
+                </a>
+            </div>
+        </div>
+   </div>
+{% endblock content %}

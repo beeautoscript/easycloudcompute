@@ -1,0 +1,41 @@
+{% extends 'home/layout.html' %}
+{% block content %}
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{url_for('home.home')}}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Access Keys</li>
+        </ol>
+    </nav>
+    {% if accesskeydb_len == 0 %}
+        <div class="alert alert-info" role="alert">
+            <i class="fas fa-key"></i>  AccessKeys not found
+        </div>
+        <a class="btn btn-success" href="{{url_for('accesskey.add_accesskey')}}" role="button">Add AccessKey</a>
+    {% else %}
+        <div class="mb-3 d-flex justify-content-md-end">
+            <a class="btn btn-success" href="{{url_for('accesskey.add_accesskey')}}" role="button">Add AccessKey</a>
+        </div>
+        <table class="table table-bordered table-hover table-sm  text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">Key Name</th>
+                    <th scope="col">Access Key Id</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in accesskey_record.items %}
+                    <tr>
+                        <td>{{i.keyname}}</td>
+                        <td>{{i.accesskeyid}}</td>
+                        <td>    
+                            <a class="btn btn-danger btn-sm me-3" href="{{url_for('accesskey.accesskey_remove',accessrowid=i.id)}}" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Access Key">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock content %}
