@@ -47,16 +47,29 @@
             {% endif %}
         </div>
         <div class="mb-3">
-            <label for="formGroupExampleInput2" class="form-label">Confirm Password</label>
-            {% if form.confirm_password.errors %}
-                {{form.confirm_password(class="form-control is-invalid",id="invalidconfirmpass")}}
+            <label for="formGroupExampleInput2" class="form-label">AWS AccessKey ID</label>
+            {% if form.access_keyid.errors %}
+                {{form.access_keyid(class="form-control is-invalid",id="invalid_access_keyid")}}
                 <div class="invalid-feedback">
-                    {% for error in form.confirm_password.errors %}
+                    {% for error in form.access_keyid.errors %}
                         <span>{{error}}</span>
                     {% endfor %}
                 </div>
             {% else %}
-                {{form.confirm_password(class="form-control",id="confirmpass")}}
+                {{form.access_keyid(class="form-control",id="access_keyid")}}
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            <label for="formGroupExampleInput2" class="form-label">AWS SecretKey</label>
+            {% if form.secret_keyid.errors %}
+                {{form.secret_keyid(class="form-control is-invalid",id="invalid_secret_keyid")}}
+                <div class="invalid-feedback">
+                    {% for error in form.secret_keyid.errors %}
+                        <span>{{error}}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{form.secret_keyid(class="form-control",id="secret_keyid")}}
             {% endif %}
         </div>
         <div class="d-grid">
@@ -79,8 +92,10 @@
           var email = document.getElementById("email").value;
           var pass = document.getElementById("pass").value;
           var confirmpass = document.getElementById("confirmpass").value;
+          var accesskey = document.getElementById("access_keyid").value;
+          var secretkey = document.getElementById("secret_keyid").value;
 
-          if (username.length == 0 || email.length == 0 || pass.length == 0 || confirmpass.length == 0){
+          if (username.length == 0 || email.length == 0 || pass.length == 0 || confirmpass.length == 0 || accesskey.length == 0 || secretkey.length == 0){
               return false;
           } else {
 

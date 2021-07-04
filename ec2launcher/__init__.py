@@ -26,11 +26,9 @@ login_manager.login_message_category = 'info'
 # Import Blueprint
 from ec2launcher.users_management.routes import blue
 from ec2launcher.home.routes import blue
-from ec2launcher.accesskey.routes import blue
 from ec2launcher.instances.routes import blue
 
 # Register Blueprint
 app.register_blueprint(users_management.routes.blue,url_prefix='/')
 app.register_blueprint(home.routes.blue,url_prefix='/')
-app.register_blueprint(accesskey.routes.blue,url_prefix='/')
 app.register_blueprint(instances.routes.blue,url_prefix='/')

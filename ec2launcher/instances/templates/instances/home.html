@@ -11,12 +11,12 @@
     </div>
     <div class="row">
         <div class="col-3">
-            <div class="text-muted mb-3 mt-3">
+            <div class="text-muted fw-bold mb-3 mt-3">
                 <span class="flag-icon flag-icon-us me-2"></span>
                 North America
             </div>
             <div class="list-group mb-3">
-                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                <a href="{{url_for('instances.dashboard',region='us-east-1:North America:us:US East (Northern Virginia)')}}" class="list-group-item list-group-item-action" aria-current="true">
                   <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">US East (Northern Virginia)</h5>
                     <small>us-east-1</small>
@@ -25,7 +25,7 @@
                   <small></small>
                 </a>
 
-                <a href="#" class="list-group-item list-group-item-action">
+                <a href="{{url_for('instances.dashboard',region='us-east-2:North America:us:US East (Ohio)')}}" class="list-group-item list-group-item-action">
                   <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">US East (Ohio)</h5>
                     <small class="text-muted">us-east-2</small>
@@ -52,12 +52,12 @@
                   <small class="text-muted"></small>
                 </a>
             </div>
-            <div class="text-muted mb-3">
+            <div class="text-muted fw-bold mb-3">
                 <span class="flag-icon flag-icon-br me-2"></span>
                 South America
             </div>
             <div class="list-group mb-3">
-                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
                       <h5 class="mb-1">South America (São Paulo)</h5>
                       <small>sa-east-1</small>
@@ -67,12 +67,12 @@
                 </a>
             </div>
 
-            <div class="text-muted mb-3">
+            <div class="text-muted fw-bold mb-3">
                 <span class="flag-icon flag-icon-ca me-2"></span>
                 Canada
             </div>
             <div class="list-group mb-3">
-                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
                       <h5 class="mb-1">Canada (Central)</h5>
                       <small>ca-central-1</small>
@@ -81,12 +81,12 @@
                     <small></small>
                 </a>
             </div>
-            <div class="text-muted mb-3">
+            <div class="text-muted fw-bold mb-3">
                 <span class="flag-icon flag-icon-bh me-2"></span>
                 Middle East
             </div>
             <div class="list-group mb-3">
-                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
                       <h5 class="mb-1">Middle East (Bahrain) </h5>
                       <small>me-south-1</small>
@@ -97,7 +97,7 @@
             </div>
         </div>
         <div class="col-3 ms-4">
-            <div class="text-muted mb-3 mt-3">
+            <div class="text-muted fw-bold mb-3 mt-3">
                 Europe
                 <span class="flag-icon flag-icon-de ms-2 me-2"></span>
                 <span class="flag-icon flag-icon-ie me-2"></span>
@@ -107,7 +107,7 @@
                 <span class="flag-icon flag-icon-se me-2"></span>
             </div>
             <div class="list-group mb-3">
-                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
                   <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">Europe (Frankfurt)</h5>
                     <small>eu-central-1</small>
@@ -159,12 +159,12 @@
                     <small class="text-muted"></small>
                 </a>
             </div>
-            <div class="text-muted mb-3">
+            <div class="text-muted fw-bold mb-3">
                 <span class="flag-icon flag-icon-af me-2"></span>
                 Africa
             </div>
             <div class="list-group mb-3">
-                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
                       <h5 class="mb-1">Africa (Cape Town)</h5>
                       <small>af-south-1</small>
@@ -175,7 +175,7 @@
             </div>
         </div>
         <div class="col-3 ms-4">
-            <div class="text-muted mb-3 mt-3">
+            <div class="text-muted fw-bold mb-3 mt-3">
                 Asia Pacific
                 <span class="flag-icon flag-icon-hk ms-2 me-2"></span>
                 <span class="flag-icon flag-icon-in me-2"></span>
@@ -185,7 +185,7 @@
                 <span class="flag-icon flag-icon-au me-2"></span>
             </div>
             <div class="list-group mb-3">
-                <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                <a href="{{url_for('instances.dashboard',region='ap-east-1:Asia Pacific:hk:Asia Pacific (Hong Kong)')}}" class="list-group-item list-group-item-action" aria-current="true">
                   <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">Asia Pacific (Hong Kong)</h5>
                     <small>ap-east-1</small>

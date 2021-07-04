@@ -5,6 +5,8 @@ from flask_login import login_user, current_user, logout_user, login_required,fr
 from flask_mail import Message
 from ec2launcher.models import Users
 from itsdangerous.exc import SignatureExpired,BadTimeSignature
+import boto3
+import botocore
 
 # Blueprint Object
 blue = Blueprint('users_management',__name__,template_folder='templates')
@@ -30,31 +32,38 @@ def login():
 def register():
     form = RegisterForm()
     if form.validate_on_submit():
-        # add new user
-        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = Users(username=form.username.data, email=form.email.data, password=hashed_password)
-        db.session.add(user)
-        db.session.commit()
-
-        # send email confirmation
+        # validate accesskey and secretkey
+        sts = boto3.client('sts',aws_access_key_id=form.access_keyid.data,aws_secret_access_key=form.secret_keyid.data)
         try:
-            email = form.email.data
-            token = safe_seralizer.dumps(email,salt='email-confirm')
-            msg = Message('Easy Cloud Compute : Email Id Confirmation (no-reply)',sender='ppokhriyal4@gmail.com',recipients=[email])
-            link = url_for('users_management.confirm_mail',token=token,user_id=user.id,_external=True)
-            msg.html = """
-                <h5>Hello,</h5><br>
-                <p>Thanks for choosing Easy Cloud Compute for Creating and Managing your Virtual Machines.</p><br>
-                <p>To start exploring please confirm your email address.</p><br>
-                <a href="{}" class="btn btn-success" role="button">Confirm email address</a>
-            """.format(link)
+            sts.get_caller_identity()
+            # add new user
+            hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+            user = Users(username=form.username.data, email=form.email.data, password=hashed_password,accesskeyid=form.access_keyid.data,secretkeyid=form.secret_keyid.data)
+            db.session.add(user)
+            db.session.commit()
 
-            mail.send(msg)
-            return redirect(url_for('users_management.message',msg='mail_sent'))
-            
-        except Exception as error:
-            print(error)
-            flash(f"Error send email address confirmation link",'danger')
+            # send email confirmation
+            try:
+                email = form.email.data
+                token = safe_seralizer.dumps(email,salt='email-confirm')
+                msg = Message('Easy Cloud Compute : Email Id Confirmation (no-reply)',sender='ppokhriyal4@gmail.com',recipients=[email])
+                link = url_for('users_management.confirm_mail',token=token,user_id=user.id,_external=True)
+                msg.html = """
+                    <h5>Hello,</h5><br>
+                    <p>Thanks for choosing Easy Cloud Compute for Creating and Managing your Virtual Machines.</p><br>
+                    <p>To start exploring please confirm your email address.</p><br>
+                    <a href="{}" class="btn btn-success" role="button">Confirm email address</a>
+                """.format(link)
+
+                mail.send(msg)
+                return redirect(url_for('users_management.message',msg='mail_sent'))
+            except Exception as error:
+                print(error)
+                flash(f"Error send email address confirmation link",'danger')
+                return redirect(url_for('users_management.login'))
+
+        except botocore.exceptions.ClientError as awserror:
+            flash(f"Invalid AccesskeyID SecretKey",'danger')
             return redirect(url_for('users_management.login'))
 
     return render_template('users_management/register.html',title="Register",form=form)

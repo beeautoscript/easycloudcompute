@@ -21,18 +21,9 @@ class Users(db.Model,UserMixin):
     email = db.Column(db.String(120),unique=True,nullable=False)
     confirm_email = db.Column(db.Boolean,default=False)
     password = db.Column(db.String(60),nullable=False)
+    accesskeyid = db.Column(db.String(20),unique=True,nullable=False)
+    secretkeyid = db.Column(db.String(40),unique=True,nullable=False)
     image_file = db.Column(db.String(20),nullable=False,default='default_user.png')
-    accesskeys = db.relationship('AccessKeys',backref="useraccesskey",uselist=False)
 
     def __repr__(self):
-        return f"User('{self.firstname}','{self.email}')"
-
-
-# Access Keys
-class AccessKeys(db.Model):
-    __bind_key__ = 'accesskeys'
-    id = db.Column(db.Integer,primary_key=True)
-    keyname = db.Column(db.String(20),unique=True,nullable=False)
-    accesskeyid = db.Column(db.String(50),unique=True,nullable=False)
-    secretkeyid = db.Column(db.String(50),unique=True,nullable=False)
-    user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
+        return f"User('{self.username}','{self.email}')"
