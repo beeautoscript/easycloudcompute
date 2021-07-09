@@ -13,28 +13,129 @@
         <div class="mt-3 mb-3"><small>You are using the Amazon EC2 resources in the <b>{{region_dict['name']}}</b> Region</small</div>
     </div>
     <div class="row">
-        <div class="col">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="resource-tab" data-bs-toggle="tab" data-bs-target="#resource" type="button" role="tab" aria-controls="resource" aria-selected="true">Resources</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Zones</button>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <!--Resources Tab-->
-                <div class="tab-pane fade show active" id="resource" role="tabpanel" aria-labelledby="resource-tab">
-                    
+        <div class="col-4">
+            <div class="fw-bold mt-3">Resources</div>
+                <div>
                     {% if instance_length == 0 %}
-    
+                        <div class="row">
+                            <div class="col">
+                                <ul class="list-group mt-3 mb-3">
+                                    <a href="http://" class="list-group-item list-group-item-action">
+                                        Instances running
+                                        <span class="badge bg-primary rounded-pill float-end">0</span>
+                                    </a>    
+                                    <a href="http://" class="list-group-item list-group-item-action">
+                                        Instances
+                                        <span class="badge bg-primary rounded-pill float-end">0</span>
+                                    </a>
+                                    <a href="http://" class="list-group-item list-group-item-action">
+                                        Volumes
+                                        <span class="badge bg-primary rounded-pill float-end">{{volumes_length}}</span>
+                                    </a>
+                                    <a href="http://" class="list-group-item list-group-item-action">
+                                        Key pairs
+                                        <span class="badge bg-primary rounded-pill float-end">{{keypair_length}}</span>
+                                    </a>
+                                    <a href="http://" class="list-group-item list-group-item-action">
+                                        Security Groups
+                                        <span class="badge bg-primary rounded-pill float-end">{{sg_length}}</span>
+                                    </a> 
+                                </ul>
+                            </div>
                     {% else %}
                     {% endif %}
-                </div>
-                <!--Zones Tab-->
-                <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+                </div>    
+            </div>
+            <div class="fw-bold">Zones</div>
+            <div class="mt-3 mb-3">
+                <table class="table table-sm table-striped table-borderless">
+                    <thead class="bg-dark text-white">
+                        <tr>
+                            <th scope="col">Zone name</th>
+                            <th scope="col">Zone ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if region_dict['region_code'] == 'us-east-1' %}
+                            <tr>
+                                <td>us-east-1a</td>
+                                <td>use1-az6</td>
+                            </tr>
+                            <tr>
+                                <td>us-east-1b</td>
+                                <td>use1-az1</td>
+                            </tr>
+                            <tr>
+                                <td>us-east-1c</td>
+                                <td>use1-az2</td>
+                            </tr>
+                            <tr>
+                                <td>us-east-1d</td>
+                                <td>use1-az4</td>
+                            </tr>
+                            <tr>
+                                <td>us-east-1e</td>
+                                <td>use1-az3</td>
+                            </tr>
+                            <tr>
+                                <td>us-east-1f</td>
+                                <td>use1-az5</td>
+                            </tr>
+                        {% elif region_dict['region_code'] == 'us-east-2' %}
+                            <tr>
+                                <td>us-east-2a</td>
+                                <td>use2-az1</td>
+                            </tr>
+                            <tr>
+                                <td>us-east-2b</td>
+                                <td>use2-az2</td>
+                            </tr>
+                            <tr>
+                                <td>us-east-2c</td>
+                                <td>use2-az3</td>
+                            </tr>
+                        {% elif region_dict['region_code'] == 'us-west-1' %}
+                            <tr>
+                                <td>us-west-1a</td>
+                                <td>usw1-az1</td>
+                            </tr>
+                            <tr>
+                                <td>us-west-1c</td>
+                                <td>usw1-az3</td>
+                            </tr>
+                        {% elif region_dict['region_code'] == 'us-west-2' %}
+                            <tr>
+                                <td>us-west-2a</td>
+                                <td>usw2-az2</td>
+                            </tr>
+                            <tr>
+                                <td>us-west-2b</td>
+                                <td>usw2-az1</td>
+                            </tr>
+                            <tr>
+                                <td>us-west-2c</td>
+                                <td>usw2-az3</td>
+                            </tr>
+                            <tr>
+                                <td>us-west-2d</td>
+                                <td>usw2-az4</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="col"></div>
+        <div class="col-4">
+            <div class="fw-bold mt-3">Launch Virtual Machine</div>
+            <div class="mt-3 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-text">To get started,launch an Amazon EC2 instance,which is a virtual machine in the cloud.</p>
+                        <a href="#" class="btn btn-warning btn-sm">Launch Instance</a><br>
+                        <small class="text-muted">Note: Your instance will launch in the <b>{{region_dict['name']}}</b> Region</small>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock content %}

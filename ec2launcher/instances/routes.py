@@ -35,8 +35,19 @@ def dashboard(region):
         instance_data = instance_load['Reservations']
         instance_list = [i['Instances'][0]['InstanceId'] for i in instance_data]
         print(instance_list)
+        # get length of key-pairs
+        keypair_client = client.describe_key_pairs()
+        keypair_length = len(keypair_client['KeyPairs'])
+        # get length of volumes
+        volumes_client = client.describe_volumes()
+        volumes_length = len(volumes_client['Volumes'])
+        # get length of security groups
+        sg_client = client.describe_security_groups()
+        sg_length = len(sg_client['SecurityGroups'])
+     
     except botocore.exceptions.ClientError:
         flash(f'Access Denied to {region_info_dict["name"]}:{region_info_dict["region_code"]}','danger')
         return redirect(url_for('instances.home'))
 
-    return render_template('instances/dashboard.html',title="Dashboard",region_dict=region_info_dict,instance_length=instance_load_length,instance_db=instance_list)
+    return render_template('instances/dashboard.html',title="Dashboard",region_dict=region_info_dict,instance_length=instance_load_length,instance_db=instance_list,keypair_length=keypair_length,
+    volumes_length=volumes_length,sg_length=sg_length)
