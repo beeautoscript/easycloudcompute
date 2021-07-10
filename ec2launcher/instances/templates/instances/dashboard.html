@@ -10,7 +10,7 @@
     <div class="mb-3">
         <span class="flag-icon flag-icon-{{region_dict['flag']}} me-2"></span>
         {{region_dict['country']}} : {{region_dict['region_code']}}
-        <div class="mt-3 mb-3"><small>You are using the Amazon EC2 resources in the <b>{{region_dict['name']}}</b> Region</small</div>
+        <div class="mt-1 mb-3"><small>You are using the Amazon EC2 resources in the <b>{{region_dict['name']}}</b> Region</small</div>
     </div>
     <div class="row">
         <div class="col-4">
@@ -131,7 +131,7 @@
                 <div class="card">
                     <div class="card-body">
                         <p class="card-text">To get started,launch an Amazon EC2 instance,which is a virtual machine in the cloud.</p>
-                        <a href="#" class="btn btn-warning btn-sm">Launch Instance</a><br>
+                        <a href="{{url_for('instances.launch_instnace_wizard',region=region)}}" class="btn btn-warning btn-sm">Launch Instance</a><br>
                         <small class="text-muted">Note: Your instance will launch in the <b>{{region_dict['name']}}</b> Region</small>
                     </div>
                 </div>

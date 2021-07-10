@@ -50,4 +50,29 @@ def dashboard(region):
         return redirect(url_for('instances.home'))
 
     return render_template('instances/dashboard.html',title="Dashboard",region_dict=region_info_dict,instance_length=instance_load_length,instance_db=instance_list,keypair_length=keypair_length,
-    volumes_length=volumes_length,sg_length=sg_length)
+    volumes_length=volumes_length,sg_length=sg_length,region=region)
+
+# Launch Instance Wizard
+@blue.route('/launchinstancewizard/<string:region>',methods=['GET','POST'])
+def launch_instnace_wizard(region):
+    region_info_dict = {}
+    region_info_dict['region_code'] = region.split(':')[0]
+    region_info_dict['country'] = region.split(':')[1]
+    region_info_dict['flag'] = region.split(':')[2]
+    region_info_dict['name'] = region.split(':')[3]
+
+    # get accesskeyid and secrectkey
+    get_accesskey_info = Users.query.filter_by(username=current_user.username).first()
+    accesskey = get_accesskey_info.accesskeyid
+    secretkey = get_accesskey_info.secretkeyid
+
+    # connect to ec2 api
+    client = boto3.client('ec2',region_name=region_info_dict['region_code'],aws_access_key_id=accesskey,aws_secret_access_key=secretkey)
+    try:
+        ami_client = client.describe_images(Filters=[{'Name':'name','Values':['Ubuntu*','Amazon*','Centos*','SUSE*','Debian*']}])
+        print(ami_client)
+    except botocore.exceptions.ClientError:
+        flash(f'Access Denied to {region_info_dict["name"]}:{region_info_dict["region_code"]}','danger')
+        return redirect(url_for('instances.home'))
+
+    return render_template('instances/launchwizard.html',title='Launch Instance Wizard',region=region,region_dict=region_info_dict)
